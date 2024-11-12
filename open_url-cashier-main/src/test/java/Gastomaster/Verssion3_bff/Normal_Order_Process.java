@@ -205,7 +205,8 @@ public class Normal_Order_Process {
 		         
 		         
 		         //check the system is display the branch list or not
-		         
+		         //s//s
+		         //s
 		         
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
 		         System.out.println("Selce the first item and open the toping section");
