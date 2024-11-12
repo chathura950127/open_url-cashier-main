@@ -155,6 +155,8 @@ public class Normal_Order_Process {
 	           
 	         /*-----  CASH PAYMENET Process  -----*/
 	        try { 
+	        	test.log(Status.INFO, "Delivery method with Postal code mode");
+	        	
 	        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
 		         System.out.println("Load the home page");
 		         Thread.sleep(5000);
@@ -164,7 +166,7 @@ public class Normal_Order_Process {
 		         Thread.sleep(3000);
 		        
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Lieferung\"])"))).click();
-				 System.out.println("Select the delivery method");
+				 System.out.println("Select the delivery method and this is a postal mmode");
 				 Thread.sleep(2000);
 				
 				 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Wählen\"])"))).click();
@@ -205,9 +207,9 @@ public class Normal_Order_Process {
 		         
 				         //check the system is display the branch list or not
 				         	try {
-				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"BRANCHES\"]")));
+				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"FILIALEN\"]")));
 				         		System.out.println("System dispayed the branch list");
-				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"ORDER NOW\"])[1]"))).click();
+				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"JETZT BESTELLEN\"])[1]"))).click();
 				         		System.out.println("click the first branch for proceed the ordering function");
 				         		Thread.sleep(5000);
 				         	}
@@ -216,11 +218,22 @@ public class Normal_Order_Process {
 				         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
 				         	};
 		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
-		         System.out.println("Selce the first item and open the toping section");
-		         Thread.sleep(2000);
-		        
-		         
+				         	
+				         // check the favorite dishes enable or not, if it enable,System selected the first dishes.
+					         try {
+					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Favourite\"]")));
+					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
+						         System.out.println("Selce the first item with in favourite list and open the toping section");
+						         Thread.sleep(2000);
+					        	 
+					         }
+					         catch(Exception Erro_of_Category) {
+					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
+						         System.out.println("Selce the first item and open the toping section");
+						         Thread.sleep(2000);
+					         }
+					         
+					         //check the toping and added the toping for item
 				         
 				         try {
 				        	 	WebElement wizardButton = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"NEIN, ÜBERALL\"])")));
@@ -231,18 +244,18 @@ public class Normal_Order_Process {
 							       }
 		
 				        } catch (Exception error_of_Wizard) {
-				        	    
-				        	    wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text=\"BBQ Chicken\"])[1]/android.widget.Image"))).click();
-			        	        Thread.sleep(2000);
-			        	        System.out.println("BBQ Chicken topping selected");
-	
-			        	        // Click the cart button to add the item to the cart
-			        	        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click();
-			        	        System.out.println("Item added to the cart");
+				        	  
+				        	
+					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text=\"BBQ Chicken\"])[1]/android.widget.Image"))).click();
+				        	        Thread.sleep(2000);
+				        	        System.out.println("BBQ Chicken topping selected");
+		
+				        	        // Click the cart button to add the item to the cart
+				        	        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click();
+				        	        System.out.println("Item added to the cart");
+				        	        Thread.sleep(2000);
 				        }
 		
-						 
-		        	
 		         		
 			     wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.webkit.WebView[@text=\"Biber & Fieber UG\"]/android.view.View/android.view.View[2]"))).click();
 		         Thread.sleep(1000);
