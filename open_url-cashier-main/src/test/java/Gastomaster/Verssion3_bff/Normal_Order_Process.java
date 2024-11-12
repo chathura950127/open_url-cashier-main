@@ -200,13 +200,21 @@ public class Normal_Order_Process {
 		         
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.app.Dialog/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View"))).click();
 		         System.out.println("close the key board");
-		         Thread.sleep(8000);
+		         Thread.sleep(3000);
 		         
 		         
-		         
-		         //check the system is display the branch list or not
-		         //s//s
-		         //s
+				         //check the system is display the branch list or not
+				         	try {
+				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"BRANCHES\"]")));
+				         		System.out.println("System dispayed the branch list");
+				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"ORDER NOW\"])[1]"))).click();
+				         		System.out.println("click the first branch for proceed the ordering function");
+				         		Thread.sleep(5000);
+				         	}
+				         	catch(Exception error_of_branch_list) {
+				         		System.out.print("System didn't display the brach list");
+				         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
+				         	};
 		         
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
 		         System.out.println("Selce the first item and open the toping section");
