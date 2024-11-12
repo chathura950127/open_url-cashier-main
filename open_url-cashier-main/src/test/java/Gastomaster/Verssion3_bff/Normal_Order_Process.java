@@ -202,6 +202,11 @@ public class Normal_Order_Process {
 		         System.out.println("close the key board");
 		         Thread.sleep(8000);
 		         
+		         
+		         
+		         //check the system is display the branch list or not
+		         
+		         
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
 		         System.out.println("Selce the first item and open the toping section");
 		         Thread.sleep(2000);
