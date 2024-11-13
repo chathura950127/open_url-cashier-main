@@ -28,7 +28,11 @@ public class Normal_Order_Process {
 	    @Before
 	    
 	    public void setUp() throws MalformedURLException, InterruptedException {
+	    	//try to push to orgin
 	    	
+	    	
+	    	
+	    	// thisisisisisisssssssssssssssssssssssssss
 	    	File reportDir = new File("reports");
 	    	if (!reportDir.exists()) {
 	    	    reportDir.mkdir();  // Create the folder if it does not exist
@@ -257,6 +261,38 @@ public class Normal_Order_Process {
 				        }
 		
 		         		
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         
+				         System.out.print("Sdadsad");
 			     wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.webkit.WebView[@text=\"Biber & Fieber UG\"]/android.view.View/android.view.View[2]"))).click();
 		         Thread.sleep(1000);
 				 System.out.println("Open the cart page");
