@@ -5,21 +5,23 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.time.Duration;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 	
 public class Normal_Order_Process {
 	  private AndroidDriver driver;
@@ -102,7 +104,6 @@ public class Normal_Order_Process {
 		           
 		           // Click "deny cookies" button
 		   		        if (!driver.findElements(AppiumBy.xpath("//android.widget.Button[@text='deny cookies']")).isEmpty()) {
-		   		        	
 		   		            System.out.println("'deny cookies' button not displayed, skipping click.");
 		   		        } else {
 		   		        	
