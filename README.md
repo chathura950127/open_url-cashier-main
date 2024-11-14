@@ -1,7 +1,7 @@
 # open_url-cashier-main
  
 download the node.js to your machine
-download nad intall the jdk
+download andd intall the jdk
 downlaod the anroid studio 
 intall the sdk
 setup the enviromnet setting with manulay
@@ -14,6 +14,7 @@ setup the enviromnet setting with manulay
 
       ANDROID_HOME -C:\Users\Intel House\AppData\Local\Android\Sdk
       ANDROID_SDK_ROOT - C:\Users\Intel House\AppData\Local\Android\Sdk
+
 
 (check the path and udtae the correct path to system)
 
