@@ -112,7 +112,7 @@ public class Normal_Order_Process {
 		   		        }
 		   		        
 		   		        
-		   		  Thread.sleep(15000);
+		   		  Thread.sleep(10000);
 		           // Click on the ellipsis horizontal button (adjust XPath to match structure)
 		   		  wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='ellipsis horizontal']"))).click();
 		   		  
@@ -134,7 +134,7 @@ public class Normal_Order_Process {
 		           test.log(Status.PASS, "User Login Process ");
 		           
 		           wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
-		           Thread.sleep(10000);
+		           Thread.sleep(5000);
 		           
 		    } catch (Exception error_login) {
 	            test.log(Status.FAIL, "Login Funcation: " + error_login.getMessage());
@@ -369,33 +369,55 @@ public class Normal_Order_Process {
 																		    		 System.out.println("An error occurred: " + scroll_down.getMessage());
 																		    		 scroll_down.printStackTrace();
 																		    	 }
+									
 																	    	  
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"))).click();
-		         Thread.sleep(15000);
+								//check the order process type									    	  
+								try{
+									WebElement checkoutbutton_type = driver.findElement(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"));
+									String ordering_method = checkoutbutton_type.getText();
+									test.log(Status.FAIL, "Your ordering process is " +ordering_method+"." );
+									
+									checkoutbutton_type.click();
+									System.out.println("checkout button click");
+								}
+								catch(Exception checkou_button) {
+									WebElement checkoutbutton_type = driver.findElement(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"));
+									String ordering_method = checkoutbutton_type.getText();
+									test.log(Status.FAIL, "Your ordering process is " +ordering_method+ ".  Please change the order process to Genaral Order via admin mode");
+									System.out.println("Your ordering process is " +ordering_method+".  Please change the order process to Genaral Order via admin mode");
+								};
+								Thread.sleep(15000);
 		       
+								
 		         //Check the URL is equal to /order-summery and order completed successfully 
-		        	 //   WebElement urlBar = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.android.chrome:id/url_bar']"));
-
-			        //	    if (urlBar.isDisplayed()) {
-			        //	        String currentUrl = urlBar.getText();
+		        	   WebElement urlBar = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.android.chrome:id/url_bar']"));
+		        	   Thread.sleep(15000);
+		        	   System.out.println("Open the checkout page on final stage");
+			        	    
+		        	   if (urlBar.isDisplayed()) {
+			        	    	System.out.println("1");
+			        	    	
+			        	        String currentUrl = urlBar.getText();
 	
-				     //   	        if (currentUrl.contains("order-summery")) {
+			        	        System.out.println(currentUrl);
+			        	        
+				        	        if (currentUrl.contains("order-summery")) {
 		
-				      //  	            String[] urlSegments = currentUrl.split("/");
+				       	            String[] urlSegments = currentUrl.split("/");
 		
-				      //  	            String lastSegment = urlSegments[urlSegments.length - 1];
+				        	            String lastSegment = urlSegments[urlSegments.length - 1];
 		
-				      //  	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
-				       // 	            test.log(Status.PASS, "Normal Order Process - Delivery ( Cash ) ");
+				        	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
+				        	            test.log(Status.PASS, "Normal Order Process - Delivery ( Cash ) ");
 				        	            
-				        //        } else {
-				        //	            System.out.println("System did not completed the order proess");
-				       // 	            test.log(Status.FAIL, "Normal Order Process - Delivery ( Cash ) ");}
+				                } else {
+				        	            System.out.println("System did not completed the order proess");
+				        	            test.log(Status.FAIL, "Normal Order Process - Delivery ( Cash ) ");}
 				        	        
-			        	//    } 
-			        //	    else {
-			        	//        System.out.println("URL bar is not displayed.");
-			        //	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
+			        	    } 
+			        	    else {
+			        	        System.out.println("URL bar is not displayed.");
+			        	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
 	        }
 	        
 		        catch (Exception error_OrderProcess) {
