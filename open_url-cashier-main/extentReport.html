@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Nov 15, 2024 03:09:39 PM</span></a>
+<a href="#"><span class="badge badge-primary">Nov 15, 2024 05:13:17 PM</span></a>
 </li>
 </ul>
 </div>
@@ -75,25 +75,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Normal_Order_Process - Loging </p>
             <p class="text-sm">
-              <span>3:09:39 PM</span> / <span>00:01:05:455</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:13:18 PM</span> / <span>00:00:53:347</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Normal_Order_Process - Loging </h5>
-<span class='badge badge-success'>11.15.2024 3:09:39 PM</span>
-<span class='badge badge-danger'>11.15.2024 3:10:44 PM</span>
-<span class='badge badge-default'>00:01:05:455</span>
+<h5 class="test-status text-fail">Normal_Order_Process - Loging </h5>
+<span class='badge badge-success'>11.15.2024 5:13:18 PM</span>
+<span class='badge badge-danger'>11.15.2024 5:14:11 PM</span>
+<span class='badge badge-default'>00:00:53:347</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -106,16 +106,16 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>3:09:52 PM</td>
+        <td>5:13:30 PM</td>
         <td>
           Browser opened.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:10:44 PM</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:11 PM</td>
         <td>
-          User Login Process 
+          Login Funcation: Expected condition failed: waiting for presence of element located by: By.xpath: //android.widget.Button[@text='deny cookies'] (tried for 25 second(s) with 500 milliseconds interval)
         </td>
       </tr>
   </tbody>
@@ -130,7 +130,7 @@
           <div class="test-detail">
             <p class="name">Normal_Order_Process - Delivery Order - Cash Paymnet</p>
             <p class="text-sm">
-              <span>3:10:50 PM</span> / <span>00:02:46:504</span>
+              <span>5:14:11 PM</span> / <span>00:03:15:633</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -139,9 +139,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">Normal_Order_Process - Delivery Order - Cash Paymnet</h5>
-<span class='badge badge-success'>11.15.2024 3:10:50 PM</span>
-<span class='badge badge-danger'>11.15.2024 3:13:36 PM</span>
-<span class='badge badge-default'>00:02:46:504</span>
+<span class='badge badge-success'>11.15.2024 5:14:11 PM</span>
+<span class='badge badge-danger'>11.15.2024 5:17:27 PM</span>
+<span class='badge badge-default'>00:03:15:633</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -154,30 +154,37 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>3:10:50 PM</td>
+        <td>5:14:11 PM</td>
         <td>
           Delivery method with Postal code mode
         </td>
       </tr>
       <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:55 PM</td>
+        <td>
+          System didn't display the branch list for proceed the ordering process
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:16:46 PM</td>
+        <td>
+          Normal Order Process : Expected condition failed: waiting for presence of element located by: By.xpath: //android.view.View[@resource-id="scroll-to-class-0"]/android.widget.ListView[1]/android.view.View (tried for 25 second(s) with 500 milliseconds interval)
+        </td>
+      </tr>
+      <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>3:13:04 PM</td>
+        <td>5:16:46 PM</td>
         <td>
-          Payment Method : Cash
+          Delivery method with Postal code mode
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:13:06 PM</td>
+        <td>5:17:27 PM</td>
         <td>
-          Your ordering process is Etwas vergessen? Erneut in den Warenkorb legen!.
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:13:36 PM</td>
-        <td>
-          Normal Order Process - Delivery ( Cash ) 
+          Normal Order Process : Expected condition failed: waiting for presence of element located by: By.xpath: //android.widget.Button[@text="Jetzt bestellen chevron forward outline chevron forward outline chevron forward outline"] (tried for 25 second(s) with 500 milliseconds interval)
         </td>
       </tr>
   </tbody>
@@ -192,7 +199,7 @@
           <div class="test-detail">
             <p class="name">Normal_Order_Process - DINE-IN Order - Paypal Paymnet</p>
             <p class="text-sm">
-              <span>3:13:36 PM</span> / <span>00:00:00:001</span>
+              <span>5:17:27 PM</span> / <span>00:00:00:004</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -201,9 +208,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Normal_Order_Process - DINE-IN Order - Paypal Paymnet</h5>
-<span class='badge badge-success'>11.15.2024 3:13:36 PM</span>
-<span class='badge badge-danger'>11.15.2024 3:13:36 PM</span>
-<span class='badge badge-default'>00:00:00:001</span>
+<span class='badge badge-success'>11.15.2024 5:17:27 PM</span>
+<span class='badge badge-danger'>11.15.2024 5:17:27 PM</span>
+<span class='badge badge-default'>00:00:00:004</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -216,7 +223,7 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:13:36 PM</td>
+        <td>5:17:27 PM</td>
         <td>
           Normal Order Process - DINE-IN ( Paypal ) -- -- Comming Zoon -- -- 
         </td>
@@ -233,7 +240,7 @@
           <div class="test-detail">
             <p class="name">Normal_Order_Process - DINE-IN Order - Stripe Paymnet</p>
             <p class="text-sm">
-              <span>3:13:36 PM</span> / <span>00:00:00:000</span>
+              <span>5:17:27 PM</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -242,8 +249,8 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Normal_Order_Process - DINE-IN Order - Stripe Paymnet</h5>
-<span class='badge badge-success'>11.15.2024 3:13:36 PM</span>
-<span class='badge badge-danger'>11.15.2024 3:13:36 PM</span>
+<span class='badge badge-success'>11.15.2024 5:17:27 PM</span>
+<span class='badge badge-danger'>11.15.2024 5:17:27 PM</span>
 <span class='badge badge-default'>00:00:00:000</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
@@ -267,25 +274,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Nov 15, 2024 03:09:39 PM</h3>
+<h3>Nov 15, 2024 05:13:17 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Nov 15, 2024 03:13:37 PM</h3>
+<h3>Nov 15, 2024 05:17:27 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>3</h3>
+<h3>2</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>2</h3>
 </div></div>
 </div>
 </div>
@@ -301,12 +308,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='75%'>
-<b>3</b> tests passed
+<div><small data-tooltip='50%'>
+<b>2</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='25%'><b>1</b> tests failed,
+<small data-tooltip='50%'><b>2</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -324,9 +331,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='28%'><b>2</b> events passed</small></div>
+<div><small data-tooltip='12%'><b>1</b> events passed</small></div>
 <div>
-<small data-tooltip='28%'><b>2</b> events failed,
+<small data-tooltip='50%'><b>4</b> events failed,
 <b data-tooltip='%'>3</b> others
 </small>
 </div>
@@ -343,7 +350,7 @@
 </div></div>
 <script>
 var timeline = {
-"Normal_Order_Process - Loging ":65.455,"Normal_Order_Process - Delivery Order - Cash Paymnet":166.504,"Normal_Order_Process - DINE-IN Order - Paypal Paymnet":0.001,"Normal_Order_Process - DINE-IN Order - Stripe Paymnet":0
+"Normal_Order_Process - Loging ":53.347,"Normal_Order_Process - Delivery Order - Cash Paymnet":195.633,"Normal_Order_Process - DINE-IN Order - Paypal Paymnet":0.004,"Normal_Order_Process - DINE-IN Order - Stripe Paymnet":0
 };
 </script>
 <div class="row">
@@ -352,8 +359,8 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 3,
-failParent: 1,
+passParent: 2,
+failParent: 2,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -369,8 +376,8 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 2,
-failEvents: 2,
+passEvents: 1,
+failEvents: 4,
 warningEvents: 0,
 skipEvents: 0,
 infoEvents: 3
