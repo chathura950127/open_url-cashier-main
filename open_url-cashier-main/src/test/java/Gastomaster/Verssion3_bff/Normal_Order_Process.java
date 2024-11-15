@@ -127,13 +127,14 @@ public class Normal_Order_Process {
 		          
 		           // Click to submit
 		           wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='main-content']/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]"))).click();
-		           Thread.sleep(5000);
+		           Thread.sleep(10000);
 		           
 		           // Verify login success by checking if the user's Dashboard is displayed (adjust ID based on your App)
 		           Assert.assertTrue(driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=' Profil']")).isDisplayed());
-		          
 		           test.log(Status.PASS, "User Login Process ");
+		           
 		           wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
+		           Thread.sleep(10000);
 		           
 		    } catch (Exception error_login) {
 	            test.log(Status.FAIL, "Login Funcation: " + error_login.getMessage());
@@ -161,7 +162,7 @@ public class Normal_Order_Process {
 	        	
 	        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
 		         System.out.println("Load the home page");
-		         Thread.sleep(5000);
+		         Thread.sleep(15000);
 		         
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Jetzt bestellen chevron forward outline chevron forward outline chevron forward outline\"]"))).click();
 		         System.out.println("select the Jetzt bestellen button");
@@ -170,33 +171,15 @@ public class Normal_Order_Process {
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Lieferung\"])"))).click();
 				 System.out.println("Select the delivery method and this is a postal mmode");
 				 Thread.sleep(2000);
-					/*
-						try {
-			         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/text\"]")));
-			         		System.out.println("system dispayed the permission request messsage for locations");
-			         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]"))).click();
-			         	}
-			         	catch(Exception error_of_location_access) {
-			         		System.out.println("system did not display the permission request message for location pick");
-			         	}
-			         	
-	
-			            try {
-			                WebElement locationmessage= driver.findElement(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.google.android.gms:id/message']"));
-			                String messageText = locationmessage.getText();
-			                System.out.println("Extracted message: " + messageText);
-			                wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]"))).click();
-			                
-			              //  if (messageText.equals("To continue")) {
-			              //      System.out.println("The text is correct: " + messageText);
-			              //  } else {
-			              //      System.out.println("Text mismatch. Expected: 'To continue', but got: " + messageText);
-			                }
-			            catch(Exception error_location_permission_request)
-			            {
-			            	System.out.println("Proceed the normal process");
-			            }
-		            */
+						 try {
+				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/text\"]")));
+				         		System.out.println("system dispayed the permission request messsage for locations");
+				         		test.log(Status.INFO, "System request the permission for location ,please enble the location permission with your mobile setting and run this script agina..!");
+							}
+				         	catch(Exception error_of_location_access) {
+				         		System.out.println("system did not display the permission request message for location pick");
+				         	}
+					
 				 
 				 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Wählen\"])"))).click();
 				 System.out.println("click the Wahlen button");
@@ -218,33 +201,17 @@ public class Normal_Order_Process {
 							 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Wählen\"])"))).click();
 							 System.out.println("click the Wahlen button");
 							 Thread.sleep(5000);
-							 /*
+							
 										try {
 							         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/text\"]")));
 							         		System.out.println("system dispayed the permission request messsage for locations");
-							         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"com.android.chrome:id/positive_button\"]"))).click();
-							         	}
+							         		test.log(Status.INFO, "System request the permission for location ,please enble the location permission with your mobile setting and run this script agina..!");
+										}
 							         	catch(Exception error_of_location_access) {
 							         		System.out.println("system did not display the permission request message for location pick");
 							         	}
-							         	
-		
-							            try {
-							                WebElement locationmessage= driver.findElement(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.google.android.gms:id/message']"));
-							                String messageText = locationmessage.getText();
-							                System.out.println("Extracted message: " + messageText);
-							                wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]"))).click();
-							                
-							              //  if (messageText.equals("To continue")) {
-							              //      System.out.println("The text is correct: " + messageText);
-							              //  } else {
-							              //      System.out.println("Text mismatch. Expected: 'To continue', but got: " + messageText);
-							                }
-							            catch(Exception error_location_permission_request)
-							            {
-							            	System.out.println("Proceed the normal process");
-							            }
-							 */
+										
+							         
 							 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='postal_code_delivery']/android.widget.EditText"))).click();		       
 							 System.out.println("click the postal code input field");
 							 Thread.sleep(5000);
@@ -279,13 +246,11 @@ public class Normal_Order_Process {
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Favourite\"]")));
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
 						         System.out.println("Selce the first item with in favourite list and open the toping section");
-						         Thread.sleep(2000);
 					        	 
 					         }
 					         catch(Exception Erro_of_Category) {
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
 						         System.out.println("Selce the first item and open the toping section");
-						         Thread.sleep(2000);
 					         }
 					         
 					         //check the toping and added the toping for item
@@ -300,18 +265,14 @@ public class Normal_Order_Process {
 		
 				        } catch (Exception error_of_Wizard) {
 				        	  
-				        	
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text=\"BBQ Chicken\"])[1]/android.widget.Image"))).click();
-				        	        Thread.sleep(2000);
 				        	        System.out.println("BBQ Chicken topping selected");
 		
-				        	        // Click the cart button to add the item to the cart
 				        	        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click();
 				        	        System.out.println("Item added to the cart");
 				        	        Thread.sleep(2000);
 				        }
 				         
-				         System.out.print("test");
 		
 			     wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.webkit.WebView[@text=\"Biber & Fieber UG\"]/android.view.View/android.view.View[2]"))).click();
 		         Thread.sleep(1000);
