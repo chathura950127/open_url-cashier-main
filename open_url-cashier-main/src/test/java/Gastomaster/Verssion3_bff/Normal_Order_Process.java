@@ -230,27 +230,27 @@ public class Normal_Order_Process {
 				         //check the system is display the branch list or not
 				         	try {
 				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"FILIALEN\"]")));
-				         		System.out.println("System dispayed the branch list");
+				         		System.out.println("System displayed the branch list");
 				         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"JETZT BESTELLEN\"])[1]"))).click();
 				         		System.out.println("click the first branch for proceed the ordering function");
 				         		Thread.sleep(5000);
 				         	}
 				         	catch(Exception error_of_branch_list) {
-				         		System.out.print("System didn't display the brach list");
+				         		System.out.print("System didn't display the branch list");
 				         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
 				         	};
 		         
 				         	
 				         // check the favorite dishes enable or not, if it enable,System selected the first dishes.
 					         try {
-					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Favourite\"]")));
+					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Favorite\"]")));
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
-						         System.out.println("Selce the first item with in favourite list and open the toping section");
+						         System.out.println("Select the first item with in favorite list and open the toping section");
 					        	 
 					         }
 					         catch(Exception Erro_of_Category) {
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
-						         System.out.println("Selce the first item and open the toping section");
+						         System.out.println("Select the first item and open the toping section");
 					         }
 					         
 					         //check the toping and added the toping for item
@@ -266,7 +266,7 @@ public class Normal_Order_Process {
 				        } catch (Exception error_of_Wizard) {
 				        	  
 					        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text=\"BBQ Chicken\"])[1]/android.widget.Image"))).click();
-				        	        System.out.println("BBQ Chicken topping selected");
+				        	        System.out.println("BBQ Chicken toping selected");
 		
 				        	        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click();
 				        	        System.out.println("Item added to the cart");
@@ -699,7 +699,7 @@ public class Normal_Order_Process {
 	    
 	    */
 	    
-	            
+	         //PayPal payment   
 	    	   
 	    	   try { 
 	    		   
@@ -883,7 +883,7 @@ public class Normal_Order_Process {
 						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image"))).click();
 						    		        Thread.sleep(1000);
 
-						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Points\"]"))).click();
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"PayPal\"]"))).click();
 						    		        
 						    		        Thread.sleep(1000);
 
@@ -891,7 +891,7 @@ public class Normal_Order_Process {
 						    		        Thread.sleep(1000);
 
 						    		    } else {
-						    		        // If the "Cash" option is already selected
+						    		        // If the "PayPal" option is already selected
 						    		        System.out.println("Error on paymnet selection.");
 						    		    }
 						    		} catch (Exception error_cash_payment_option) {
@@ -901,8 +901,8 @@ public class Normal_Order_Process {
 						    		}
 						    	  
 						    	  //Verify the payment method
-						    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  Points\"]")).isDisplayed()) {
-						    		  test.log(Status.INFO , ("Payment Method : Points"));
+						    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  PayPal\"]")).isDisplayed()) {
+						    		  test.log(Status.INFO , ("Payment Method : PayPal"));
 						    	  }
 						    	  else {
 						    		  test.log(Status.INFO , ("Invalid Paymnet Method"));
@@ -936,6 +936,46 @@ public class Normal_Order_Process {
 									};
 									Thread.sleep(15000);
 			       
+									
+								//adding the PayPal account details for pay	
+									try {
+										WebElement Paypal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
+										String Paypal_Logo_Text = Paypal_Logo.getText();
+										test.log(Status.FAIL, "Your Paypant process is "+Paypal_Logo_Text+"." );
+									
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys("sb-j59s630900969@business.example.com");										
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnNext\"]"))).click();
+						    		        Thread.sleep(1000);
+											
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).click();
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).sendKeys("g*Y%vSs3");										
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnLogin\"]"))).click();
+						    		        Thread.sleep(1000);
+						    		        
+						    		        
+						    		        
+						    		      
+									}
+									catch(Exception error_of_Paypal) {
+										System.out.println("Paypal paymnet process can't proceed..!,");
+										System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										
+										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										test.log(Status.FAIL, "Paypal paymnet process can't proceed..!");
+										}
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
 									
 			         //Check the URL is equal to /order-summery and order completed successfully 
 			        	   WebElement urlBar = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.android.chrome:id/url_bar']"));
