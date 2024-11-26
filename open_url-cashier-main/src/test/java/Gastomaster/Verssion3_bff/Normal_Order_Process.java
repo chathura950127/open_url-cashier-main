@@ -23,7 +23,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 	
-public class Normal_Order_Process {
+public class Normal_Order_Process{
 	  private AndroidDriver driver;
 	  private ExtentReports extent;
 	  private ExtentTest test;
@@ -41,7 +41,7 @@ public class Normal_Order_Process {
 	         extent.attachReporter(sparkReporter);	  
 	         
 	         // Start the test
-	        test = extent.createTest("Normal_Order_Process - Loging ", "Verifying Login process");
+	        test = extent.createTest("Normal_Order_Process (Postal Code)- Loging ", "Verifying Login process");
 	        
 	    	String systemUrl ="https://www.bff.cashier.lk";
 	    	String userEmail = "chathurashamikaindrguptha@gmail.com";
@@ -146,19 +146,18 @@ public class Normal_Order_Process {
 	    
 	    @Test
 	    public void Normal_Order_Process_DELIVERY () throws InterruptedException {
-	    	
-	   	 test = extent.createTest("Normal_Order_Process - Delivery Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
-	    	 System.out.println("Start -Normal_Order_Process - Delivery Order - Cash Paymnet ");
-	    	 
 	    	String PostalName = "Hessen";
 	    	String PostalAddress ="Theo-Geisel-Straße 12Usingen, Germany";
 	    	String StreetNumber ="12";
 	    	
 	    	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25)); 
+	    	   
 	           
 	         /*-----  CASH PAYMENET Process  -----*/
 	    /*    try { 
-	        	test.log(Status.INFO, "Delivery method with Postal code mode");
+	        	
+	        	test = extent.createTest("Normal_Order_Process (Postal Code)- Delivery Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
+	    	 	System.out.println("Start -Normal_Order_Process (Postal Code)- Delivery Order - Cash Paymnet ");
 	        	
 	        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
 		         System.out.println("Load the home page");
@@ -428,9 +427,9 @@ public class Normal_Order_Process {
 */
 
 	         //-----  POINT PAYMNET  -----
-	    /*    try { 
-	     		test = extent.createTest("Normal_Order_Process - Delivery Order - Point Payment", "  Verify The Point Payment Process");
-		        System.out.println("Start -Normal_Order_Process - Delivery Order - Point Payment ");
+	    	   /* try { 
+	     		test = extent.createTest("Normal_Order_Process (Postal Code)- Delivery Order - Point Payment", "  Verify The Point Payment Process");
+		        System.out.println("Start -Normal_Order_Process (Postal Code)- Delivery Order - Point Payment ");
 	        	test.log(Status.INFO, "Delivery method with Postal code mode");
 	        	
 	        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
@@ -692,19 +691,21 @@ public class Normal_Order_Process {
 			        	    else {
 			        	        System.out.println("URL bar is not displayed.");
 			        	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
-	        }
+	      } 
 	        
 		        catch (Exception error_OrderProcess) {
 		            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
-	    
-	    */
+	       */
+	   
 	    
 	         //PayPal payment   
-	    	   
+	 /*
+	  * 
+	  *    	   
 	    	   try { 
 	    		   
-	    		   	test = extent.createTest("Normal_Order_Process - Delivery Order - PayPal Payment", "  Verify The Paypal Payment Process");
-		        	System.out.println("Start -Normal_Order_Process - Delivery Order - Paypal Payment ");
+	    		   	test = extent.createTest("Normal_Order_Process (Postal Code)- Delivery Order - PayPal Payment", "  Verify The Paypal Payment Process");
+		        	System.out.println("Start -Normal_Order_Process (Postal Code)- Delivery Order - Paypal Payment ");
 		        	test.log(Status.INFO, "Delivery method with Postal code mode");
 		        	
 		        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
@@ -953,8 +954,10 @@ public class Normal_Order_Process {
 											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).sendKeys("g*Y%vSs3");										
 											
 											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnLogin\"]"))).click();
-						    		        Thread.sleep(1000);
-						    		        
+											Thread.sleep(1000);
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"payment-submit-btn\"]"))).click();
+											Thread.sleep(2000);
 						    		        
 						    		        
 						    		      
@@ -966,11 +969,6 @@ public class Normal_Order_Process {
 										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
 										test.log(Status.FAIL, "Paypal paymnet process can't proceed..!");
 										}
-									
-									
-									
-									
-									
 									
 									
 									
@@ -996,11 +994,11 @@ public class Normal_Order_Process {
 					        	            String lastSegment = urlSegments[urlSegments.length - 1];
 			
 					        	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
-					        	            test.log(Status.PASS, "Normal Order Process - Delivery ( Points ) ");
+					        	            test.log(Status.PASS, "Normal Order Process - Delivery ( PayPal ) ");
 					        	            
 					                } else {
 					        	            System.out.println("System did not completed the order proess");
-					        	            test.log(Status.FAIL, "Normal Order Process - Delivery ( Points ) ");}
+					        	            test.log(Status.FAIL, "Normal Order Process - Delivery ( PayPal ) ");}
 					        	        
 				        	    } 
 				        	    else {
@@ -1010,194 +1008,351 @@ public class Normal_Order_Process {
 		        
 			        catch (Exception error_OrderProcess) {
 			            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
-		       
-	    	  
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	  
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	    	   
-	   
+		      
+	    */	   
 	        
 	        
-	   /*  // STRIPE payment
+	    // STRIPE payment
+	     
 	        try { 
-	        	
-	        	 test = extent.createTest("Normal_Order_Process - Delivery Order - STRIPE Paymnet", "  Verify The STRIPE Paymnet Process");
-	        	 System.out.println("Start -Normal_Order_Process - Delivery Order - STRIPE Paymnet ");
-	        	 
-		       /*  wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
-		         Thread.sleep(8000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Jetzt bestellen chevron forward outline chevron forward outline chevron forward outline\"]"))).click();
-		         Thread.sleep(12000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='postal_code_delivery']/android.widget.EditText"))).sendKeys(PostalName);
-		         Thread.sleep(2000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"postal_code_deliveryList\"]/android.view.View/android.view.View/android.view.View"))).click();
-		         Thread.sleep(1000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Jetzt bestellen\"]"))).click();
-		         Thread.sleep(1000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='scroll-to-class-0']/android.widget.ListView[1]/android.view.View"))).click();
-		         Thread.sleep(1000);
-		         
-				     if (!driver.findElements(AppiumBy.xpath("//android.app.Dialog/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]")).isEmpty()) {
-				    	 
-				    		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text='Topping'])[1]/android.widget.Image"))).click();
-				    	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click(); //change the button name here
-		   		        } else {
-		   		        	
-		   		        	System.out.println("'In den Warenkorb (13.29 €)' button not displayed, skipping click.");
-		   		        }
-			   
-			     wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.webkit.WebView[@text=\"Biber & Fieber UG\"]/android.view.View/android.view.View[2]"))).click();
-		         Thread.sleep(1000);
-		         
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"wallet outline Bestellen 15.29 €\"]"))).click(); //change the button name here
-		         Thread.sleep(10000);
-				         
-				         //Check if the address section is empty; if it is empty, then add the address.
-						      try {    
-								 WebElement postaladdressElement = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"));
+	    		   
+	    		   	test = extent.createTest("Normal_Order_Process (Postal Code)- Delivery Order - Stripe Payment", "  Verify The Stripe Payment Process");
+		        	System.out.println("Start -Normal_Order_Process (Postal Code)- Delivery Order - Stripe Payment ");
+		        	test.log(Status.INFO, "Delivery method with Postal code mode");
+		        	
+		        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='home HEIM']"))).click();
+			         System.out.println("Load the home page");
+			         Thread.sleep(15000);
+			         
+			         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Jetzt bestellen chevron forward outline chevron forward outline chevron forward outline\"]"))).click();
+			         System.out.println("select the Jetzt bestellen button");
+			         Thread.sleep(3000);
+			        
+			         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Lieferung\"])"))).click();
+					 System.out.println("Select the delivery method and this is a postal mmode");
+					 Thread.sleep(2000);
+							 try {
+					         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/text\"]")));
+					         		System.out.println("system dispayed the permission request messsage for locations");
+					         		test.log(Status.INFO, "System request the permission for location ,please enble the location permission with your mobile setting and run this script agina..!");
+								}
+					         	catch(Exception error_of_location_access) {
+					         		System.out.println("system did not display the permission request message for location pick");
+					         	}
+						
+					 
+					 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Wählen\"])"))).click();
+					 System.out.println("click the Wahlen button");
+					 Thread.sleep(5000);
+					 
+							 try {
+								 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='postal_code_delivery']/android.widget.EditText"))).click();
+								 Thread.sleep(5000);
+							 }
+							 catch(Exception eroor_on_postal_code_page){
+								 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Jetzt bestellen chevron forward outline chevron forward outline chevron forward outline\"]"))).click();
+						         System.out.println("select the Jetzt bestellen button");
+						         Thread.sleep(5000);
+						        
+						         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Lieferung\"])"))).click();
+								 System.out.println("Select the delivery method");
+								 Thread.sleep(2000);
 								
-							         if (postaladdressElement.isDisplayed()) {
-							        	
-							        	 	//check the address is empty
-									         if (!driver.findElements(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]")).isEmpty()) {
-									        	
-									        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"))).sendKeys(PostalAddress);
-									        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"))).click();
-									        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Theo-Geisel-Straße 12Usingen, Germany\"]"))).click();
-									        	 	
-									        	 			//check the street number is empty
-													         if (!driver.findElements(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"street_number_id\"]")).isEmpty()) {
-													        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"street_number_id\"]"))).sendKeys(StreetNumber);
-													        	 	
-												   		        } else {
-												   		        	
-												   		        	System.out.println("Street number is already defined.");
-												   		        }
-									         } else {
-								   		        	
-								   		        	System.out.println("Street address is already defined.");
-								   		        }
-									         
-									         String scrolldowntofintsavebutton = "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()";
-									         driver.findElement(AppiumBy.androidUIAutomator(scrolldowntofintsavebutton));
-									         
-									         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"checkout_delivery_information_saveBtn\"]"))).click();
-							         }
-							         else {
-							        	 System.out.println("Address is already defined.");
-							         }}
-						      catch(Exception Error_addresscheck) {
-						        		 
-						        		 	System.out.println(Error_addresscheck);
-						        	 }
-						      
-						      
-						      
-						   // Select if the "POINT" payment option 
-					    	  try {
-					    		  	String scrollableElement = "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()";
-							         driver.findElement(AppiumBy.androidUIAutomator(scrollableElement));
-							         
-
-					    		    // Check if the "Cash" payment option is displayed
-					    		    if (driver.findElement(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image")).isDisplayed()) {
-
-					    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image"))).click();
-					    		        Thread.sleep(1000);
-
-					    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Points\"]"))).click();
-					    		        Thread.sleep(1000);
-
-					    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='Ok']"))).click();
-					    		        Thread.sleep(1000);
-
-					    		    } else {
-					    		        // If the "Cash" option is already selected
-					    		        System.out.println("Error on paymnet selection.");
-					    		    }
-					    		} catch (Exception error_cash_payment_option) {
-					    		    // Handle exceptions
-					    		    System.out.println("An error occurred: " + error_cash_payment_option.getMessage());
-					    		    error_cash_payment_option.printStackTrace();
-					    		}
-					    	  
-					    	  //Verify the payment method
-					    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  STRIPE\"]")).isDisplayed()) {
-					    		  test.log(Status.INFO , ("Payment Method : STRIPESTRIPE"));
-					    	  }
-					    	  else {
-					    		  test.log(Status.INFO , ("Invalid Paymnet Method"));
-					    	  }
-					    	  
-		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"))).click();
-		         Thread.sleep(15000);
-		         
+								 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.TextView[@text=\"Wählen\"])"))).click();
+								 System.out.println("click the Wahlen button");
+								 Thread.sleep(5000);
+								
+											try {
+								         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"com.android.chrome:id/text\"]")));
+								         		System.out.println("system dispayed the permission request messsage for locations");
+								         		test.log(Status.INFO, "System request the permission for location ,please enble the location permission with your mobile setting and run this script agina..!");
+											}
+								         	catch(Exception error_of_location_access) {
+								         		System.out.println("system did not display the permission request message for location pick");
+								         	}
+											
+								         
+								 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='postal_code_delivery']/android.widget.EditText"))).click();		       
+								 System.out.println("click the postal code input field");
+								 Thread.sleep(5000);
+							 };
+					 
+					
+			         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id='postal_code_delivery']/android.widget.EditText"))).sendKeys(PostalName);
+			         System.out.println("enter the postal code");
+			         Thread.sleep(3000);
+			         
+			         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.app.Dialog/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View"))).click();
+			         System.out.println("close the key board");
+			         Thread.sleep(3000);
+			         
+			         
+					         //check the system is display the branch list or not
+					         	try {
+					         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"FILIALEN\"]")));
+					         		System.out.println("System dispayed the branch list");
+					         		wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"JETZT BESTELLEN\"])[1]"))).click();
+					         		System.out.println("click the first branch for proceed the ordering function");
+					         		Thread.sleep(5000);
+					         	}
+					         	catch(Exception error_of_branch_list) {
+					         		System.out.print("System didn't display the brach list");
+					         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
+					         	};
+			         
+					         	
+					         // check the favorite dishes enable or not, if it enable,System selected the first dishes.
+						         try {
+						        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Favourite\"]")));
+						        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
+							         System.out.println("Selce the first item with in favourite list and open the toping section");
+						        	 
+						         }
+						         catch(Exception Erro_of_Category) {
+						        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"scroll-to-class-0\"]/android.widget.ListView[1]/android.view.View"))).click();
+							         System.out.println("Selce the first item and open the toping section");
+						         }
+						         
+						         //check the toping and added the toping for item
+					         
 					         try {
-					         		if (driver.findElement(AppiumBy.xpath("//android.widget.Button[@text=\"Aufladen\"]")).isDisplayed()) {
-					         			System.out.println("Insufficent Point Balance, Please recharge your point balnce and Run agin");
-					         			test.log(Status.INFO , ("Insufficent Point Balance, Please recharge your point balnce and Run agin"));
-					         		}
-					         }
-					         catch(Exception error_message_Insufficent_Point_balnce) {
-					        	 System.out.println(error_message_Insufficent_Point_balnce);
-					         }
-			       
-					         //Check the URL is equal to /order-summery and order completed successfully 
-		        	    WebElement urlBar = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.android.chrome:id/url_bar']"));
+					        	 	WebElement wizardButton = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.Button[@text=\"NEIN, ÜBERALL\"])")));
+								       if(wizardButton.isDisplayed()) {
+									        	       
+							        	System.out.println("System displayed Wizard mode. Please change the wizard mode to default mode in the admin portal settings.");
+									    test.log(Status.INFO, "System displayed Wizard mode. Please change the wizard mode to default mode in the admin portal settings.");
+								       }
+			
+					        } catch (Exception error_of_Wizard) {
+					        	  
+						        	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("(//android.widget.CheckBox[@text=\"BBQ Chicken\"])[1]/android.widget.Image"))).click();
+					        	        System.out.println("BBQ Chicken topping selected");
+			
+					        	        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"cart outline In den Warenkorb (13.29 €)\"]"))).click();
+					        	        System.out.println("Item added to the cart");
+					        	        Thread.sleep(2000);
+					        }
+					         
+			
+				     wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.webkit.WebView[@text=\"Biber & Fieber UG\"]/android.view.View/android.view.View[2]"))).click();
+			         Thread.sleep(1000);
+					 System.out.println("Open the cart page");
+					 
+			         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"wallet outline Bestellen 15.29 €\"]"))).click(); //change the button name here
+			         Thread.sleep(10000);
+					         
+			         
+			         
+			         
+			         
+					         //Check if the address section is empty; if it is empty, then add the address.
+							      try {    
+									 WebElement postaladdressElement = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"));
+									
+								         if (postaladdressElement.isDisplayed()) {
+								        	
+								        	 	//check the address is empty
+										         if (!driver.findElements(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]")).isEmpty()) {
+										        	
+										        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"))).sendKeys(PostalAddress);
+										        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"postal-code-google\"]"))).click();
+										        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Theo-Geisel-Straße 12Usingen, Germany\"]"))).click();
+										        	 	
+										        	 			//check the street number is empty
+														         if (!driver.findElements(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"street_number_id\"]")).isEmpty()) {
+														        	 	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"street_number_id\"]"))).sendKeys(StreetNumber);
+														        	 	
+													   		        } else {
+													   		        	
+													   		        	System.out.println("Street number is already defined.");
+													   		        }
+										         } else {
+									   		        	
+									   		        	System.out.println("Street address is already defined.");
+									   		        }
+										         
+										         String scrolldowntofintsavebutton = "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()";
+										         driver.findElement(AppiumBy.androidUIAutomator(scrolldowntofintsavebutton));
+										         
+										         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"checkout_delivery_information_saveBtn\"]"))).click();
+								         }
+								         else {
+								        	 System.out.println("Address is already defined.");
+								         }}
+							      catch(Exception Error_addresscheck) {
+							        		 
+							        		 	System.out.println(Error_addresscheck);
+							        	 }
+							      
+						    
+						      
+							   // Select if the "Point" payment option 
+						    	  try {
+						    		  	String scrollableElement = "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()";
+								         driver.findElement(AppiumBy.androidUIAutomator(scrollableElement));
+								         
 
-			        	    if (urlBar.isDisplayed()) {
-			        	        String currentUrl = urlBar.getText();
-	
-				        	        if (currentUrl.contains("order-summery")) {
+						    		    // Check if the "Cash" payment option is displayed
+						    		    if (driver.findElement(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image")).isDisplayed()) {
+
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image"))).click();
+						    		        Thread.sleep(1000);
+
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"PayPal\"]"))).click();
+						    		        
+						    		        Thread.sleep(1000);
+
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text='Ok']"))).click();
+						    		        Thread.sleep(1000);
+
+						    		    } else {
+						    		        // If the "PayPal" option is already selected
+						    		        System.out.println("Error on paymnet selection.");
+						    		    }
+						    		} catch (Exception error_cash_payment_option) {
+						    		    // Handle exceptions
+						    		    System.out.println("An error occurred: " + error_cash_payment_option.getMessage());
+						    		    error_cash_payment_option.printStackTrace();
+						    		}
+						    	
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  
+						    	  //Verify the payment method
+						    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  PayPal\"]")).isDisplayed()) {
+						    		  test.log(Status.INFO , ("Payment Method : Stripe"));
+						    	  }
+						    	  else {
+						    		  test.log(Status.INFO , ("Invalid Paymnet Method"));
+						    	  }
+
+						    	  
+																		    	  try {
+																			    		 String scrollableElement = "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()";
+																					      driver.findElement(AppiumBy.androidUIAutomator(scrollableElement));  
+																			    	 }
+																			    	 catch(Exception scroll_down) {
+																			    		 System.out.println("An error occurred: " + scroll_down.getMessage());
+																			    		 scroll_down.printStackTrace();
+																			    	 }
+										
+																		    	  
+									//check the order process type									    	  
+									try{
+										WebElement checkoutbutton_type = driver.findElement(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"));
+										String ordering_method = checkoutbutton_type.getText();
+										test.log(Status.FAIL, "Your ordering process is " +ordering_method+"." );
+										
+										checkoutbutton_type.click();
+										System.out.println("checkout button click");
+									}
+									catch(Exception checkou_button) {
+										WebElement checkoutbutton_type = driver.findElement(AppiumBy.xpath("//android.widget.Button[@resource-id='checkout_proceed_btn']"));
+										String ordering_method = checkoutbutton_type.getText();
+										test.log(Status.FAIL, "Your ordering process is " +ordering_method+ ".  Please change the order process to Genaral Order via admin mode");
+										System.out.println("Your ordering process is " +ordering_method+".  Please change the order process to Genaral Order via admin mode");
+									};
+									Thread.sleep(15000);
+			       
+									
+								//adding the PayPal account details for pay	
+									try {
+										
+										
+										
+										
+										
+										
+										
+										WebElement Paypal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
+										String Paypal_Logo_Text = Paypal_Logo.getText();
+										test.log(Status.FAIL, "Your Paypant process is "+Paypal_Logo_Text+"." );
+									
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys("sb-j59s630900969@business.example.com");										
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnNext\"]"))).click();
+						    		        Thread.sleep(1000);
+											
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).click();
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).sendKeys("g*Y%vSs3");										
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnLogin\"]"))).click();
+											Thread.sleep(1000);
+											
+											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"payment-submit-btn\"]"))).click();
+											Thread.sleep(2000);
+						    		        
+						    		        
+						    		      
+									}
+									catch(Exception error_of_Paypal) {
+										System.out.println("Stripe paymnet process can't proceed..!,");
+										System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										
+										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										test.log(Status.FAIL, "Stripe paymnet process can't proceed..!");
+										}
+									
+									
+									
+									
+									
+									
+			         //Check the URL is equal to /order-summery and order completed successfully 
+			        	   WebElement urlBar = driver.findElement(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.android.chrome:id/url_bar']"));
+			        	   Thread.sleep(15000);
+			        	   System.out.println("Open the checkout page on final stage");
+				        	    
+			        	   if (urlBar.isDisplayed()) {
+				        	    	System.out.println("1");
+				        	    	
+				        	        String currentUrl = urlBar.getText();
 		
-				        	            String[] urlSegments = currentUrl.split("/");
-		
-				        	            String lastSegment = urlSegments[urlSegments.length - 1];
-		
-				        	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
-				        	            test.log(Status.PASS, "Normal Order Process - Delivery ( STRIPE ) ");
-				        	            
-				        	        } else {
-				        	            System.out.println("System did not completed the order proess");
-				        	            test.log(Status.FAIL, "Normal Order Process - Delivery ( STRIPE ) ");}
+				        	        System.out.println(currentUrl);
 				        	        
-			        	    } 
-			        	    else {
-			        	        System.out.println("URL bar is not displayed.");
-			        	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
-			        	         *//*
-	        	 
-	        	 test.log(Status.PASS, "Normal Order Process - Delivery ( STRIPE ) -- -- Comming Zoon -- -- ");
-	        }
+					        	        if (currentUrl.contains("order-summery")) {
+			
+					       	            String[] urlSegments = currentUrl.split("/");
+			
+					        	            String lastSegment = urlSegments[urlSegments.length - 1];
+			
+					        	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
+					        	            test.log(Status.PASS, "Normal Order Process - Delivery ( Stripe ) ");
+					        	            
+					                } else {
+					        	            System.out.println("System did not completed the order proess");
+					        	            test.log(Status.FAIL, "Normal Order Process - Delivery ( Stripe ) ");}
+					        	        
+				        	    } 
+				        	    else {
+				        	        System.out.println("URL bar is not displayed.");
+				        	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
+		        }
+		        
+			        catch (Exception error_OrderProcess) {
+			            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
+		      
 	        
-		        catch (Exception error_OrderProcess) {
-		            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
 	        
 	    
 	    // END Delivery Order Method
@@ -1214,8 +1369,8 @@ public class Normal_Order_Process {
 	        /*
 	        try { 
 	        	
-	        	test = extent.createTest("Normal_Order_Process - DINE-IN Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
-		    	 System.out.println("Start -Normal_Order_Process - DINE-IN Order - Cash Paymnet ");
+	        	test = extent.createTest("Normal_Order_Process (Postal Code)- DINE-IN Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
+		    	 System.out.println("Start -Normal_Order_Process (Postal Code)- DINE-IN Order - Cash Paymnet ");
 		    	 
 		    	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 		         Thread.sleep(5000);
@@ -1377,8 +1532,8 @@ public class Normal_Order_Process {
 	         //-----  POINT PAYMNET  -----
 	        try { 
 	        	
-	        	 test = extent.createTest("Normal_Order_Process - DINE-IN Order - Point Paymnet", "  Verify The Point Paymnet Process");
-	        	 System.out.println("Start -Normal_Order_Process - DINE-IN Order - Point Paymnet ");
+	        	 test = extent.createTest("Normal_Order_Process (Postal Code)- DINE-IN Order - Point Paymnet", "  Verify The Point Paymnet Process");
+	        	 System.out.println("Start -Normal_Order_Process (Postal Code)- DINE-IN Order - Point Paymnet ");
 	        	 
 		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 		         Thread.sleep(5000);
@@ -1546,12 +1701,12 @@ public class Normal_Order_Process {
 	    
 	     
 	     /*-----  Paypal PAYMENET Process  -----*/
-	        try { 
+	    	   /*    try { 
 	        	
-	        	test = extent.createTest("Normal_Order_Process - DINE-IN Order - Paypal Paymnet", "  Verify The Paypal Paymnet Process");
-		    	 System.out.println("Start -Normal_Order_Process - DINE-IN Order - Paypal Paymnet ");
+	        	test = extent.createTest("Normal_Order_Process (Postal Code)- DINE-IN Order - Paypal Paymnet", "  Verify The Paypal Paymnet Process");
+		    	 System.out.println("Start -Normal_Order_Process (Postal Code)- DINE-IN Order - Paypal Paymnet ");
 		    	 
-		    	 /*	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
+		    	 	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 		         Thread.sleep(5000);
 		         
 				         try {
@@ -1693,22 +1848,22 @@ public class Normal_Order_Process {
 			        	    else {
 
 			        	    }
-			 */
+			
 			        	    test.log(Status.PASS, "Normal Order Process - DINE-IN ( Paypal ) -- -- Comming Zoon -- -- ");
 	        }
 	        
 		        catch (Exception error_OrderProcess) {
 		            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
 	    
-
+ */
 
 	         //-----  Stripe PAYMNET  -----
-	        try { 
+	    	   /*        try { 
 	        	
-	        	 test = extent.createTest("Normal_Order_Process - DINE-IN Order - Stripe Paymnet", "  Verify The Stripe Paymnet Process");
-	        	 System.out.println("Start -Normal_Order_Process - DINE-IN Order - Stripe Paymnet ");
+	        	 test = extent.createTest("Normal_Order_Process (Postal Code)- DINE-IN Order - Stripe Paymnet", "  Verify The Stripe Paymnet Process");
+	        	 System.out.println("Start -Normal_Order_Process (Postal Code)- DINE-IN Order - Stripe Paymnet ");
 	        	 
-		      /*   wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
+		         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 		         Thread.sleep(5000);
 		         
 				         try {
@@ -1876,8 +2031,8 @@ public class Normal_Order_Process {
 	        
         try { 
         	
-        	test = extent.createTest("Normal_Order_Process - PICKUP Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
-	    	 System.out.println("Start -Normal_Order_Process - PICKUP Order - Cash Paymnet ");
+        	test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - Cash Paymnet", "  Verify The Cash Paymnet Process");
+	    	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - Cash Paymnet ");
 	    	 
 	    	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 	         Thread.sleep(5000);
@@ -2039,8 +2194,8 @@ public class Normal_Order_Process {
          //-----  POINT PAYMNET  -----
         try { 
         	
-        	 test = extent.createTest("Normal_Order_Process - PICKUP Order - Point Paymnet", "  Verify The Point Paymnet Process");
-        	 System.out.println("Start -Normal_Order_Process - PICKUP Order - Point Paymnet ");
+        	 test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - Point Paymnet", "  Verify The Point Paymnet Process");
+        	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - Point Paymnet ");
         	 
 	         wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 	         Thread.sleep(5000);
@@ -2212,8 +2367,8 @@ public class Normal_Order_Process {
 	     //*--Paypal Paymnet Method--*
 	       try { 
         	
-        	test = extent.createTest("Normal_Order_Process - PICKUP Order - Paypal Paymnet", "  Verify The Paypal Paymnet Process");
-	    	 System.out.println("Start -Normal_Order_Process - PICKUP Order - Paypal Paymnet ");
+        	test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - Paypal Paymnet", "  Verify The Paypal Paymnet Process");
+	    	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - Paypal Paymnet ");
 	    	 
 	    	 /*	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 	         	Thread.sleep(5000);
@@ -2368,8 +2523,8 @@ public class Normal_Order_Process {
          //-----  Stripe PAYMNET  -----
         try { 
         	
-        	 test = extent.createTest("Normal_Order_Process - PICKUP Order - Stripe Paymnet", "  Verify The Stripe Paymnet Process");
-        	 System.out.println("Start -Normal_Order_Process - PICKUP Order - Stripe Paymnet ");
+        	 test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - Stripe Paymnet", "  Verify The Stripe Paymnet Process");
+        	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - Stripe Paymnet ");
         	 
 	     /*    wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 	         Thread.sleep(5000);
@@ -2521,18 +2676,19 @@ public class Normal_Order_Process {
 		        	    else {
 		        	        System.out.println("URL bar is not displayed.");
 		        	        test.log(Status.FAIL, "Normal Order Process - Checkout Process");}
-		    *//*
-		        	         test.log(Status.PASS, "Normal Order Process - PICKUP ( Stripe ) -- -- Comming Zoon -- --");
-        */
-	        	 }
-        
+		    
+		    	 }
+         
         
 	        catch (Exception error_OrderProcess1) {
-	            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess1.getMessage());}
-        
+	            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess1.getMessage());
+	            }
+	        */
+	        
         //end the test script
         }
-        
+         
+	    	   
         
 	    @After
 	    public void tearDown() {
