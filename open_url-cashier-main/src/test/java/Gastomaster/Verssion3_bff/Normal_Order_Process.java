@@ -146,6 +146,11 @@ public class Normal_Order_Process{
 	    
 	    @Test
 	    public void Normal_Order_Process_DELIVERY () throws InterruptedException {
+	    	String userEmail ="chathurashamikaindrguptha@gmail.com";
+	    	String Card_Number ="4242424242424242";
+	    	String cardExpiry="0852";
+	    	String cardCvc ="454";
+	    	String billingName ="Chathura Shamika";
 	    	String PostalName = "Hessen";
 	    	String PostalAddress ="Theo-Geisel-Straße 12Usingen, Germany";
 	    	String StreetNumber ="12";
@@ -1198,19 +1203,7 @@ public class Normal_Order_Process{
 						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.view.View[@resource-id=\"checkout_payment_method_btn\"]/android.widget.Image"))).click();
 						    		        Thread.sleep(1000);
 
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        
-						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"PayPal\"]"))).click();
+						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@text=\"Stripe\"]"))).click();
 						    		        
 						    		        Thread.sleep(1000);
 
@@ -1228,17 +1221,8 @@ public class Normal_Order_Process{
 						    		}
 						    	
 						    	  
-						    	  
-						    	  
-						    	  
-						    	  
-						    	  
-						    	  
-						    	  
-						    	  
-						    	  
 						    	  //Verify the payment method
-						    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  PayPal\"]")).isDisplayed()) {
+						    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  Stripe\"]")).isDisplayed()) {
 						    		  test.log(Status.INFO , ("Payment Method : Stripe"));
 						    	  }
 						    	  else {
@@ -1274,46 +1258,46 @@ public class Normal_Order_Process{
 									Thread.sleep(15000);
 			       
 									
-								//adding the PayPal account details for pay	
+								//adding the Stripe account details for pay	
 									try {
 										
-										
-										
-										
-										
-										
-										
-										WebElement Paypal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
-										String Paypal_Logo_Text = Paypal_Logo.getText();
-										test.log(Status.FAIL, "Your Paypant process is "+Paypal_Logo_Text+"." );
+										WebElement Provied_by = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"Stripe\"]"));
+										String Provied_by_Text = Provied_by.getText();
+										test.log(Status.FAIL, "Your Paypant process is "+Provied_by_Text+"." );
 									
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys("sb-j59s630900969@business.example.com");										
 											
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnNext\"]"))).click();
-						    		        Thread.sleep(1000);
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys(userEmail);										
+												
+										
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardNumber\"]"))).click();
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardNumber\"]"))).sendKeys(Card_Number);
+							    		      
+												
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardExpiry\"]"))).click();
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardExpiry\"]"))).sendKeys(cardExpiry);
+												
+												
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardCvc\"]"))).click();
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"cardCvc\"]"))).sendKeys(cardCvc);
+												
+												
+							    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"billingName\"]"))).click();
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"billingName\"]"))).sendKeys(billingName);
+												
 											
-						    		        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).click();
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"password\"]"))).sendKeys("g*Y%vSs3");										
-											
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"btnLogin\"]"))).click();
-											Thread.sleep(1000);
-											
-											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@resource-id=\"payment-submit-btn\"]"))).click();
-											Thread.sleep(2000);
+												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"Pay\"]"))).click();
+												Thread.sleep(15000);
+												
 						    		        
-						    		        
-						    		      
 									}
-									catch(Exception error_of_Paypal) {
+									catch(Exception error_of_stripe) {
 										System.out.println("Stripe paymnet process can't proceed..!,");
 										System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
 										
 										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
 										test.log(Status.FAIL, "Stripe paymnet process can't proceed..!");
 										}
-									
-									
 									
 									
 									
