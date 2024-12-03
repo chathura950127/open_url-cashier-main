@@ -67,7 +67,7 @@ public class Normal_Order_Process{
 			        	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.id("com.android.chrome:id/signin_fre_dismiss_button"))).click();
 			        }
 			        else {
-			        	System.out.println("skip the permmision 01");
+			        	System.out.println("skip the Permission 01");
 			        }
 					        /*     
 					        //Given the permission to Notification
@@ -75,22 +75,22 @@ public class Normal_Order_Process{
 					        	wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.id("com.android.chrome:id/positive_button"))).click();
 					        }
 					        else {
-					        	System.out.println("skip the permmision");
+					        	System.out.println("skip the Permission");
 					        }
 					        
-					        //given notfication permsission to mobile
+					        //given Notification Permission to mobile
 					        if (driver.findElements(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button")).isEmpty()) {
 						        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button"))).click();
 						    }
 					        else {
-					        	System.out.println("skip the permmision");
+					        	System.out.println("skip the Permission");
 					        }
 					         */ 
 			        if (driver.findElements(AppiumBy.id("com.android.chrome:id/ack_button")).isEmpty()) {
 				        wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.id("com.android.chrome:id/ack_button"))).click();
 			        }
 			        else {
-			        	System.out.println("skip the permmision 02");
+			        	System.out.println("skip the Permission 02");
 			        }
 			        
 		           // Navigate to the URL
@@ -511,7 +511,7 @@ public class Normal_Order_Process{
 				         		Thread.sleep(5000);
 				         	}
 				         	catch(Exception error_of_branch_list) {
-				         		System.out.print("System didn't display the brach list");
+				         		System.out.print("System didn't display the branch list");
 				         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
 				         	};
 		         
@@ -786,7 +786,7 @@ public class Normal_Order_Process{
 					         		Thread.sleep(5000);
 					         	}
 					         	catch(Exception error_of_branch_list) {
-					         		System.out.print("System didn't display the brach list");
+					         		System.out.print("System didn't display the branch list");
 					         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
 					         	};
 			         
@@ -942,9 +942,9 @@ public class Normal_Order_Process{
 									
 								//adding the PayPal account details for pay	
 									try {
-										WebElement Paypal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
-										String Paypal_Logo_Text = Paypal_Logo.getText();
-										test.log(Status.FAIL, "Your Paypant process is "+Paypal_Logo_Text+"." );
+										WebElement PayPal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
+										String PayPal_Logo_Text = PayPal_Logo.getText();
+										test.log(Status.FAIL, "Your Payment process is "+PayPal_Logo_Text+"." );
 									
 											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
 											wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys("sb-j59s630900969@business.example.com");										
@@ -964,12 +964,12 @@ public class Normal_Order_Process{
 						    		        
 						    		      
 									}
-									catch(Exception error_of_Paypal) {
-										System.out.println("Paypal Payment process can't proceed..!,");
-										System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+									catch(Exception error_of_PayPal) {
+										System.out.println("PayPal Payment process can't proceed..!,");
+										System.out.println("Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
 										
-										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
-										test.log(Status.FAIL, "Paypal Payment process can't proceed..!");
+										test.log(Status.WARNING, "Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
+										test.log(Status.FAIL, "PayPal Payment process can't proceed..!");
 										}
 									
 									
@@ -1098,7 +1098,7 @@ public class Normal_Order_Process{
 					         		Thread.sleep(5000);
 					         	}
 					         	catch(Exception error_of_branch_list) {
-					         		System.out.print("System didn't display the brach list");
+					         		System.out.print("System didn't display the branch list");
 					         		test.log(Status.FAIL, "System didn't display the branch list for proceed the ordering process");
 					         	};
 			         
@@ -1260,7 +1260,7 @@ public class Normal_Order_Process{
 										
 										WebElement Provied_by = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"Stripe\"]"));
 										String Provied_by_Text = Provied_by.getText();
-										test.log(Status.FAIL, "Your Paypant process is "+Provied_by_Text+"." );
+										test.log(Status.FAIL, "Your Payment process is "+Provied_by_Text+"." );
 									
 											
 												wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
@@ -1290,9 +1290,9 @@ public class Normal_Order_Process{
 									}
 									catch(Exception error_of_stripe) {
 										System.out.println("Stripe Payment process can't proceed..!,");
-										System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										System.out.println("Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
 										
-										test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+										test.log(Status.WARNING, "Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
 										test.log(Status.FAIL, "Stripe Payment process can't proceed..!");
 										}
 									
@@ -1304,7 +1304,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
@@ -1559,7 +1559,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
@@ -1801,7 +1801,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
@@ -1828,7 +1828,7 @@ public class Normal_Order_Process{
 		        
 			        catch (Exception error_OrderProcess) {
 			            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
-	  */  
+	  
 	     
 	     /*-----  PayPal PAYMENET Process  -----*/
 	       try { 
@@ -2037,9 +2037,9 @@ public class Normal_Order_Process{
 								
 							//adding the PayPal account details for pay	
 								try {
-									WebElement Paypal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
-									String Paypal_Logo_Text = Paypal_Logo.getText();
-									test.log(Status.FAIL, "Your Paypant process is "+Paypal_Logo_Text+"." );
+									WebElement PayPal_Logo = driver.findElement(AppiumBy.xpath("//android.widget.Image[@text=\"PayPal Logo\"]"));
+									String PayPal_Logo_Text = PayPal_Logo.getText();
+									test.log(Status.FAIL, "Your Payment process is "+PayPal_Logo_Text+"." );
 								
 										wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).click();
 										wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"email\"]"))).sendKeys("sb-j59s630900969@business.example.com");										
@@ -2059,12 +2059,12 @@ public class Normal_Order_Process{
 					    		        
 					    		      
 								}
-								catch(Exception error_of_Paypal) {
-									System.out.println("Paypal Payment process can't proceed..!,");
-									System.out.println("Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
+								catch(Exception error_of_PayPal) {
+									System.out.println("PayPal Payment process can't proceed..!,");
+									System.out.println("Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
 									
-									test.log(Status.WARNING, "Please chek payment configuartion on your admin portal or sandbox option should enable for run this scenario");
-									test.log(Status.FAIL, "Paypal Payment process can't proceed..!");
+									test.log(Status.WARNING, "Please Check payment configuration on your admin portal or sandbox option should enable for run this scenario");
+									test.log(Status.FAIL, "PayPal Payment process can't proceed..!");
 									}
 								
 								
@@ -2611,11 +2611,11 @@ public class Normal_Order_Process{
         
 
 	   
-	     //*--Paypal Payment Method--*
+	     //*--PayPal Payment Method--*
 	       try { 
         	
-        	test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - Paypal Payment", "  Verify The Paypal Payment Process");
-	    	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - Paypal Payment ");
+        	test = extent.createTest("Normal_Order_Process (Postal Code)- PICKUP Order - PayPal Payment", "  Verify The PayPal Payment Process");
+	    	 System.out.println("Start -Normal_Order_Process (Postal Code)- PICKUP Order - PayPal Payment ");
 	    	 
 	    	 /*	 wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.xpath("//android.widget.Button[@text=\"pricetag MENÜ\"]"))).click();
 	         	Thread.sleep(5000);
@@ -2720,13 +2720,13 @@ public class Normal_Order_Process{
 				    		    }
 				    		} catch (Exception error_cash_payment_option) {
 				    		    // Handle exceptions
-				    		    System.out.println("An error occurred: " + error_Paypal_payment_option.getMessage());
-				    		    error_Paypal_payment_option.printStackTrace();
+				    		    System.out.println("An error occurred: " + error_PayPal_payment_option.getMessage());
+				    		    error_PayPal_payment_option.printStackTrace();
 				    		}
 				    	  
 				    	//Verify the payment method
 				    	  if (driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\"  Cash\"]")).isDisplayed()) {
-				    		  test.log(Status.INFO , ("Payment Method : Paypal"));
+				    		  test.log(Status.INFO , ("Payment Method : PayPal"));
 				    	  }
 				    	  else {
 				    		  test.log(Status.INFO , ("Invalid Payment Method"));
@@ -2748,18 +2748,18 @@ public class Normal_Order_Process{
 			        	            String lastSegment = urlSegments[urlSegments.length - 1];
 	
 			        	            test.log(Status.INFO ,("Payment ID : " + lastSegment));
-			        	            test.log(Status.PASS, "Normal Order Process - PICKUP ( Paypal ) ");
+			        	            test.log(Status.PASS, "Normal Order Process - PICKUP ( PayPal ) ");
 			        	            
 			        	        } else {
 			        	            System.out.println("System did not completed the order process");
-			        	            test.log(Status.FAIL, "Normal Order Process - PICKUP ( Paypal ) ");}   
+			        	            test.log(Status.FAIL, "Normal Order Process - PICKUP ( PayPal ) ");}   
 			        	        
 		        	    } 
 		        	    else {
 
 		        	    }
 	*//*	        	    
-	    	 test.log(Status.PASS, "Normal Order Process - PICKUP ( Paypal ) -- -- Comming Zoon -- -- ");
+	    	 test.log(Status.PASS, "Normal Order Process - PICKUP ( PayPal ) -- -- Comming Zoon -- -- ");
         }
         
 	        catch (Exception error_OrderProcess) {
