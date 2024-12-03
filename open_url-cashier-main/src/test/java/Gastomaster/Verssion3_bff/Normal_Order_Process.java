@@ -1011,8 +1011,6 @@ public class Normal_Order_Process{
 			            test.log(Status.FAIL, "Normal Order Process : " + error_OrderProcess.getMessage());}
 		      
 	    */	   
-	        
-	        
 	    // STRIPE payment
 	
 	   /*
@@ -1304,7 +1302,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
@@ -1559,7 +1557,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
@@ -1801,7 +1799,7 @@ public class Normal_Order_Process{
 			        	   Thread.sleep(15000);
 			        	   System.out.println("Open the checkout page on final stage");
 				        	    
-			        	   if (urlBar.isDisplayed()) {
+			        	   if (urlBar.isDisplayed()) {
 				        	    	
 				        	        String currentUrl = urlBar.getText();
 		
